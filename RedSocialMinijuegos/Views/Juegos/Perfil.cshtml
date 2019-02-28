@@ -1,0 +1,97 @@
+﻿@using RedSocialMinijuegos.Models 
+@model IEnumerable<RedSocialMinijuegos.Models.MostrarPerfil>
+
+@{
+    ViewBag.Title = "Perfil";
+    Usuario usuario = ViewBag.usario;
+    int suma=0;
+    foreach(var item in Model)
+    {
+        suma += (int)item.Total;
+    }
+}
+
+<h2>Perfil</h2>
+
+<div class="container">
+    <form method="post">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="first">Email</label>
+                    <input type="text" disabled class="form-control" placeholder="@usuario.Email" id="first">
+                </div>
+            </div>
+            <!--  col-md-6   -->
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="last">Usuario</label>
+                    <input type="text" disabled class="form-control" placeholder="@usuario.Usuario1" id="last">
+                </div>
+            </div>
+            <!--  col-md-6   -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="first">Gemas</label>
+                    <input type="text" class="form-control" placeholder="@usuario.Gemas" disabled id="first">
+                </div>
+            </div>
+            <!--  col-md-6   -->
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="last">Total de Puntos</label>
+                    <input type="number" disabled class="form-control" placeholder="@suma" id="last">
+                </div>
+            </div>
+            <!--  col-md-6   -->
+        </div>
+        
+
+
+       
+    </form>
+</div>
+
+<br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreJuego)
+        </th>
+        <th>
+            
+        </th>
+        <th>
+            Suma Total
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreJuego)
+        </td>
+        <td>
+           <img src="~/Imagenes/@item.Imagen"  height="50px" width="50px"/> 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+    </tr>
+}
+
+</table>

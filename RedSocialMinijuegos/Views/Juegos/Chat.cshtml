@@ -1,0 +1,53 @@
+﻿
+@section chat {
+    <style>
+        .panel-fixed-height {
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0px;
+        }
+
+        .vertical-center-row {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/app.js"></script>
+}
+
+
+<div class="container">
+    <div class="row">
+        <!-- Chat users list -->
+        <div class="col-xs-4 col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="onlineUsersCount">Online users: 0</div>
+                <div class="panel-body panel-fixed-height">
+                    <ul id="userList"></ul>
+                </div>
+            </div>
+        </div>
+        <!--Chat window-->
+        <div class="col-xs-8 col-md-10" id="chatPanel">
+            <div class="panel panel-default">
+                <div class="panel-heading">Users' messages:</div>
+                <div class="panel-body panel-fixed-height">
+                    <ul id="messagesArea"></ul>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" id="userMessage" placeholder="Write your message">
+                <span class="input-group-btn">
+                    <a class="btn btn-default" id="btnSendMessage">Send!</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

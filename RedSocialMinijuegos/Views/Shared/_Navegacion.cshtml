@@ -1,0 +1,67 @@
+﻿
+
+@if (HttpContext.Current.User.IsInRole("Admin") == true)
+{
+
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Index", "Home")">Index</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Games", "Home")">Juegos</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Chat", "Juegos")">Chat</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Ranking", "Home")">Ranking</a>
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Contac", "Home")">Contacto</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Index", "Administracion")">Administracion</a>
+
+
+    <div class="dropdown show">
+        <a style="color:red" class=" py-2 d-none d-md-inline-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @HttpContext.Current.User.Identity.Name
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="@Url.Action("Perfil", "Juegos", new { usuario =HttpContext.Current.User.Identity.Name})">Mi perfil</a>
+    
+            <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Validador")">Cerrar Sesion</a>
+        </div>
+    </div>
+
+}
+else if (HttpContext.Current.User.IsInRole("User") == true)
+{
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Index", "Home")">Index</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Games", "Home")">Juegos</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Chat", "Juegos")">Chat</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Ranking", "Home")">Ranking</a>
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Contac", "Home")">Contacto</a>
+
+
+    <div class="dropdown show">
+        <a style="color:red" class=" py-2 d-none d-md-inline-block dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @HttpContext.Current.User.Identity.Name
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="@Url.Action("Perfil", "Juegos", new { usuario =HttpContext.Current.User.Identity.Name})">Mi perfil</a>
+          
+            <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Validador")">Cerrar Sesion</a>
+        </div>
+    </div>
+
+
+}
+else
+{
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Index", "Home")">Index</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Games", "Home")">Juegos</a>
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Ranking", "Home")">Ranking</a>
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Contac", "Home")">Contacto</a>
+
+    <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Login", "Validador")">Iniciar Sesion</a>
+
+
+}
+

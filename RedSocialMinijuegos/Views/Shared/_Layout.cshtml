@@ -1,0 +1,100 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+    @Styles.Render("~/Content/css")
+    
+</head>
+<body>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <nav class="site-header navbar-expand-lg sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2 navbar navbar-dark ">
+
+                
+                    <img id="centrado" class="navbar-toggler " data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" src="~/Imagenes/tic/logo.png" height="50" width="50"  />
+            
+
+            </a>
+            @{
+                Html.RenderAction("_Navegacion", "Home");
+            }
+
+        </div>
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="text-white p-4">
+
+                    @{
+                        Html.RenderAction("_reslayout", "Home");
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <div class="menu"> <span></span> </div>
+    <nav id="nav">
+        <ul class="main">
+            @{
+                Html.RenderAction("_categorias", "Home");
+            }
+        </ul>
+    </nav>
+
+
+
+
+
+    <div class="container">
+        @RenderBody()
+
+        <!-- Footer -->
+
+    </div>
+
+
+    <div class="container">
+
+
+
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("chat", false);
+    @RenderSection("scripts", false);
+    <script>
+        $('.menu, .overlay').click(function () {
+            $('.menu').toggleClass('clicked');
+
+            $('#nav').toggleClass('show');
+
+        })
+    </script>
+    <footer class="modal-footer  fixed-bottom " style=" background-color: rgba(0, 0, 0, .85) !important">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+</html>

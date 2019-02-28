@@ -1,0 +1,60 @@
+﻿@model RedSocialMinijuegos.Models.Juego
+
+@{
+    ViewBag.Title = "EditJuegos";
+}
+
+<h2>Edit Juegos</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Juego</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Nombre)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.imagen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+  
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">CSS</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="css" rows="5">@Model.css</textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">JS</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="scritp" rows="5">@Model.scritp</textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Html</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="hyml" rows="5">@Model.hyml</textarea>
+    </div>>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,54 @@
+﻿@using RedSocialMinijuegos.Models
+@model List<Juego>
+
+<div class="row">
+    @foreach (Juego a in Model)
+    {
+
+
+        <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+                <a href="@Url.Action("Index", "Juegos", new { nombre = a.Nombre })">
+                    <img class="card-img-top" src="~/Imagenes/@a.imagen" alt="">
+                </a>
+                <div class="card-body">
+                    <h3 class="card-title">
+                        @a.Nombre
+                    </h3>
+                    <h5 class="card-subtitle text-center"> 
+                        Valoracion: @(a.Valoracion/a.Nveces)/5
+                        <form method="post" onclick="">
+                            @* preguntar en clase  *@
+                            <p class="clasificacion">
+                                <input hidden type="text" name="nombre" value="@a.Nombre">
+                                <input id="@a.Nombre+1" type="radio" name="estrellas" value="5" onchange="this.form.submit()" >
+
+                                <label for="@a.Nombre+1">★</label>
+
+                                <input id="@a.Nombre+2" type="radio" name="estrellas" value="4" onchange="this.form.submit()">
+
+                                <label for="@a.Nombre+2">★</label>
+
+                                <input id="@a.Nombre+3" type="radio" name="estrellas" value="3" onchange="this.form.submit()">
+
+                                <label for="@a.Nombre+3">★</label>
+
+                                <input id="@a.Nombre+4" type="radio" name="estrellas" value="2" onchange="this.form.submit()">
+
+                                <label for="@a.Nombre+4">★</label>
+
+                                <input id="@a.Nombre+5" type="radio" name="estrellas" value="1" onchange="this.form.submit()">
+
+                                <label for="@a.Nombre+5">★</label>
+                                <input id="nombre" type="hidden" name="nombre" value="@a.Nombre">
+                                
+                            </p>
+                        </form>
+
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

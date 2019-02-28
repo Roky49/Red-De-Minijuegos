@@ -1,0 +1,96 @@
+﻿@model IEnumerable<RedSocialMinijuegos.Models.Juego>
+
+@{
+    ViewBag.Title = "Juegos";
+}
+
+<h2>Juegos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Juego", "CreateJuegos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nveces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valoracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagen)
+        </th>
+        <th>
+            CSS
+        </th>
+        <th>
+            JS
+        </th>
+        <th>
+            HTML
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nveces)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valoracion)
+        </td>
+        <td>
+            <img src="~/Imagenes/@item.imagen" height="100" width="100" />
+        </td>
+        <td>
+            @if (item.css != null)
+            {
+                <img src="~/Imagenes/tic/bien.jpg" height="50" width="50" />
+            }
+            else
+            {
+                <img src="~/Imagenes/tic/mal.png" height="50" width="50" />
+            }
+        </td>
+        <td>
+            @if (item.css != null)
+            {
+                <img src="~/Imagenes/tic/bien.jpg" height="50" width="50" />
+            }
+            else
+            {
+                <img src="~/Imagenes/tic/mal.png" height="50" width="50" />
+            }
+        </td>
+        <td>
+            @if (item.hyml != null)
+            {
+                <img src="~/Imagenes/tic/bien.jpg" height="50" width="50" />
+            }
+            else
+            {
+                <img src="~/Imagenes/tic/mal.png" height="50" width="50" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditJuegos", new { id = item.Nombre }) |
+         
+            @Html.ActionLink("Delete", "BorrarJuegos", new { id = item.Nombre })
+        </td>
+    </tr>
+}
+
+</table>

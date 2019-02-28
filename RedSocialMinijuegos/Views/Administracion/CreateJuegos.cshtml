@@ -1,0 +1,47 @@
+﻿@using RedSocialMinijuegos.Models
+
+@{
+    List<Categoria> cate = ViewBag.cate;
+    ViewBag.Title = "CreateJuegos";
+}
+
+<h2>Crear Juegos</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Nombre">Nombre del  Juego</label>
+        <input type="text" class="form-control" id="Nombre" name="nombre" aria-describedby="Nombre" placeholder="Nombre">
+
+    </div>
+    <div class="form-group">
+        <label for="Nombre">Categoria </label>
+        <select name="Tipo" class="form-control">
+            @foreach (Categoria c in cate)
+            {
+                <option value="@c.IdCategoria" name="Tipo">@c.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Example file input</label>
+        <input type="file" class="form-control-file" name="imagen" id="exampleFormControlFile1">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">CSS</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="css" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">JS</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="scritp" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Html</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="hyml" rows="5"></textarea>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

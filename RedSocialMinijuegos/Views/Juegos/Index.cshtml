@@ -1,0 +1,17 @@
+﻿@model RedSocialMinijuegos.Models.Juego
+
+
+
+@Html.Raw(Model.hyml);
+
+
+
+@section scripts{
+    <style>
+        @Html.Raw(Model.css);
+    </style>
+    <script>
+         @Html.Raw(Model.scritp);
+
+    </script>
+}

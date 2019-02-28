@@ -1,0 +1,12 @@
+﻿@using RedSocialMinijuegos.Models
+@model List<Categoria>
+
+@foreach (Categoria j in Model)
+{
+
+    <li>
+        @Html.ActionLink(j.Nombre, "GAMES", "Home", new { id = j.IdCategoria }, null)
+    </li>
+
+}
+

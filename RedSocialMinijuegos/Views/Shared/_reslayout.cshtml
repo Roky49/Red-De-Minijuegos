@@ -1,0 +1,65 @@
+﻿
+
+
+@if (HttpContext.Current.User.IsInRole("Admin") == true)
+{
+
+<ul>
+    <li><a href="@Url.Action("Index", "Home")">Index</a></li>
+    <li><a href="@Url.Action("Games", "Home")">Juegos</a></li>
+    <li><a href="@Url.Action("Chat", "Juegos")">Chat</a></li>
+    <li><a href="@Url.Action("Ranking", "Home")"> Ranking </a></li>
+    <li><a href="@Url.Action("Contac", "Home")">Contacto</a></li>
+    <li><a href="@Url.Action("Index", "Administracion")">Administracion</a></li>
+</ul>
+
+    <div class="dropdown show">
+        <a style="color:red" class="dropdown-toggle-split" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <div id="nombre">@HttpContext.Current.User.Identity.Name</div>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="@Url.Action("Perfil", "Juegos", new { usuario =HttpContext.Current.User.Identity.Name})">Mi perfil</a>
+
+            <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Validador")">Cerrar Sesion</a>
+        </div>
+    </div>
+
+}
+else if (HttpContext.Current.User.IsInRole("User") == true)
+{
+    <ul>
+        <li><a href="@Url.Action("Index", "Home")">Index</a></li>
+        <li><a href="@Url.Action("Games", "Home")">Juegos</a></li>
+        <li><a href="@Url.Action("Ranking", "Home")"> Ranking </a></li>
+        <li><a href="@Url.Action("Chat", "Juegos")">Chat</a></li>
+        <li><a href="@Url.Action("Contac", "Home")">Contacto</a></li>
+    </ul>
+
+
+    <div class="dropdown show">
+        <a style="color:red" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div id="nombre">@HttpContext.Current.User.Identity.Name</div>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="@Url.Action("Perfil", "Juegos", new { usuario =HttpContext.Current.User.Identity.Name})">Mi perfil</a>
+           
+            <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Validador")">Cerrar Sesion</a>
+        </div>
+    </div>
+
+
+}
+else
+{
+    <ul>
+    <li><a href="@Url.Action("Index", "Home")">Index</a></li>
+    <li><a href="@Url.Action("Games", "Home")">Juegos</a></li>
+    <li><a href = "@Url.Action("Ranking", "Home")" > Ranking </a></li>
+    <li><a href="@Url.Action("Contac", "Home")">Contacto</a></li>
+    <li><a href="@Url.Action("Login", "Validador")">Iniciar Sesion</a></li>
+    </ul>
+
+}
+

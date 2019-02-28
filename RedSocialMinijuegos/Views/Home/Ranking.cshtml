@@ -1,0 +1,78 @@
+﻿@using RedSocialMinijuegos.Models
+@model List<RANKING>
+
+@{
+    ViewBag.Title = "PaginarLinq";
+}
+
+@{
+        int registros = ViewBag.Registros;
+        int numeropagina = 1;
+    
+}
+
+<h2>Ranking</h2>
+<form method="post">
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="submit">Enviar</button>
+            </div>
+            
+            <select class="custom-select" id="inputGroupSelect03" name="juego">
+                <option  selected>Elige el juego</option>
+                @foreach (String ran in ViewBag.nombrejuegos)
+                {
+                    <option value="@ran">@ran</option>
+                }
+            </select>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Usuario</th>
+        <th>Nombre Del Juego</th>
+        <th>Puntuacion</th>
+    </tr>
+    @foreach (RANKING juego in Model)
+    {
+        <tr>
+            <td>@juego.Usuario</td>
+            <td>@juego.NombreJuego</td>
+            <td style="color:orangered;">@juego.Puntuacion</td>
+        </tr>
+    }
+    <tr>
+        <td align="center" colspan="3">
+            @for (int i = 0; i < registros; i += 7)
+            {
+            <span>
+                @if (ViewBag.juego != null)
+                {
+                    @Html.ActionLink(numeropagina + "  "
+                                 , "Ranking", "Home"
+                                 , new
+                                 {
+                                     clave = i,
+                                     juego = ViewBag.juego
+                                 }, null)
+                }
+                else
+                {
+                    @Html.ActionLink(numeropagina + "  "
+                             , "Ranking", "Home"
+                             , new
+                             {
+                                 clave = i
+                             }, null)
+                }
+            </span>
+                numeropagina += 1;
+            }
+        </td>
+    </tr>
+</table>
+
+}
